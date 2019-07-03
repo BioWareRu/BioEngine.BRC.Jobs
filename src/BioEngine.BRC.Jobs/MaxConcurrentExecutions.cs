@@ -15,7 +15,7 @@ namespace BioEngine.BRC.Jobs
         public MaxConcurrentExecutions(int maxConcurrentExecutionsAllowed)
         {
             if (maxConcurrentExecutionsAllowed <= 0) throw new ArgumentException("maxConcurrentExecutionsAllowed argument value should be greater that zero.");
-            this.MaxConcurrentExecutionsAllowed = maxConcurrentExecutionsAllowed;
+            MaxConcurrentExecutionsAllowed = maxConcurrentExecutionsAllowed;
         }
 
         public void OnCreated(CreatedContext filterContext)
