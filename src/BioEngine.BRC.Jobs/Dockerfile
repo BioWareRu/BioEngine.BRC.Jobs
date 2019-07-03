@@ -1,0 +1,6 @@
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0
+
+WORKDIR /app
+COPY . .
+HEALTHCHECK --interval=30s --timeout=5s --retries=1 CMD curl --silent --fail http://localhost:80/health || exit 1
+CMD ["dotnet", "BioEngine.BRC.Jobs.dll"]

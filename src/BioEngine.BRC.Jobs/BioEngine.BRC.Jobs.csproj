@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+        <LangVersion>8.0</LangVersion>
+        <UserSecretsId>bw</UserSecretsId>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="BioEngine.Core.Site" Version="3.0.*" Condition="!Exists('..\..\..\..\BioEngine\BioEngine.Core')" />
+        <PackageReference Include="BioEngine.BRC.Common" Version="3.0.*" Condition="!Exists('..\..\..\BioEngine.BRC.Common')" />
+        <PackageReference Include="BioEngine.Extra.IPB" Version="3.0.*" Condition="!Exists('..\..\..\..\BioEngine\BioEngine.Extra.IPB')" />
+        <PackageReference Include="BioEngine.Core.Posts" Version="3.0.*" Condition="!Exists('..\..\..\..\BioEngine\BioEngine.Core')" />
+        <PackageReference Include="Hangfire.AspNetCore" Version="1.7.4" />
+        <PackageReference Include="Hangfire.PostgreSql" Version="1.6.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\BioEngine.BRC.Common\src\BioEngine.BRC.Common\BioEngine.BRC.Common.csproj" Condition="Exists('..\..\..\BioEngine.BRC.Common')" />
+        <ProjectReference Include="..\..\..\..\BioEngine\BioEngine.Core\src\BioEngine.Core.Site\BioEngine.Core.Site.csproj" Condition="Exists('..\..\..\..\BioEngine\BioEngine.Core')" />
+        <ProjectReference Include="..\..\..\..\BioEngine\BioEngine.Extra.IPB\src\BioEngine.Extra.IPB\BioEngine.Extra.IPB.csproj" Condition="Exists('..\..\..\..\BioEngine\BioEngine.Extra.IPB')" />
+        <ProjectReference Include="..\..\..\..\BioEngine\BioEngine.Core\src\BioEngine.Core.Posts\BioEngine.Core.Posts.csproj" Condition="Exists('..\..\..\..\BioEngine\BioEngine.Core')" />
+    </ItemGroup>
+</Project>
