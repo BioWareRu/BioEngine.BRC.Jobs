@@ -31,18 +31,18 @@ namespace BioEngine.BRC.Jobs
             var processingJobs = filterContext.Storage.GetMonitoringApi().ProcessingJobs(0, 10000);
             if (processingJobs.Count > 0)
             {
-                var pj = string.Join(", ", processingJobs.Select(j => j.Key + " : " + j.Value.Job.ToString()));
+                var pj = string.Join(", ", processingJobs.Select(j => j.Key + " : " + j.Value.Job));
                 _logger.Info(pj);
             }
             var matchingJobCount = processingJobs.Count(j => j.Value.Job.ToString().Equals(jobName));
             if (matchingJobCount >= MaxConcurrentExecutionsAllowed)
             {
-                _logger.Info($"Cancel start attempt for {jobName} because {matchingJobCount} jobs are already running");
+                _logger.Info($"Cancel start attempt for {jobName} because {matchingJobCount.ToString()} jobs are already running");
                 filterContext.Canceled = true;
             }
             else
             {
-                _logger.Info($"New {jobName} job will be started. Currently Running / Max Allowed: {matchingJobCount} / {MaxConcurrentExecutionsAllowed}");
+                _logger.Info($"New {jobName} job will be started. Currently Running / Max Allowed: {matchingJobCount.ToString()} / {MaxConcurrentExecutionsAllowed.ToString()}");
             }
         }
     }

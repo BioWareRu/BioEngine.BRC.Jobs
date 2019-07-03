@@ -1,9 +1,7 @@
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 using BioEngine.Extra.IPB.Comments;
 using Hangfire;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace BioEngine.BRC.Jobs
@@ -11,12 +9,10 @@ namespace BioEngine.BRC.Jobs
     public class JobsService : IHostedService
     {
         private readonly IRecurringJobManager _recurringJobManager;
-        private readonly IServiceProvider _serviceProvider;
 
-        public JobsService(IRecurringJobManager recurringJobManager, IServiceProvider serviceProvider)
+        public JobsService(IRecurringJobManager recurringJobManager)
         {
             _recurringJobManager = recurringJobManager;
-            _serviceProvider = serviceProvider;
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
