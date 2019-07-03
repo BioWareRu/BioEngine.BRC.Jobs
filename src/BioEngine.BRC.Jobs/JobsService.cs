@@ -1,6 +1,5 @@
 using System.Threading;
 using System.Threading.Tasks;
-using BioEngine.Extra.IPB.Comments;
 using Hangfire;
 using Microsoft.Extensions.Hosting;
 
@@ -28,28 +27,6 @@ namespace BioEngine.BRC.Jobs
         public Task StopAsync(CancellationToken cancellationToken)
         {
             return Task.CompletedTask;
-        }
-    }
-
-    public class IPBJobsRunner
-    {
-        private readonly IPBCommentsSynchronizer _commentsSynchronizer;
-
-        public IPBJobsRunner(IPBCommentsSynchronizer commentsSynchronizer)
-        {
-            _commentsSynchronizer = commentsSynchronizer;
-        }
-
-        [MaxConcurrentExecutions(1)]
-        public Task SyncAllCommentsAsync()
-        {
-            return _commentsSynchronizer.SyncAllAsync();
-        }
-
-        [MaxConcurrentExecutions(1)]
-        public Task SyncNewCommentsAsync()
-        {
-            return _commentsSynchronizer.SyncNewAsync();
         }
     }
 }
