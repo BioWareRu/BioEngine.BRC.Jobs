@@ -14,7 +14,7 @@ namespace BioEngine.BRC.Jobs
                 .AddBrcDomain()
                 .AddLogging()
                 .AddS3Storage()
-                .AddModule<IPBSiteModule, IPBModuleConfig>((configuration, env) =>
+                .AddModule<IPBSiteModule, IPBSiteModuleConfig>((configuration, env) =>
                 {
                     if (!Uri.TryCreate(configuration["BE_IPB_URL"], UriKind.Absolute, out var ipbUrl))
                     {
@@ -25,7 +25,7 @@ namespace BioEngine.BRC.Jobs
                     int.TryParse(configuration["BE_IPB_API_PUBLISHER_GROUP_ID"], out var publisherGroupId);
                     int.TryParse(configuration["BE_IPB_API_EDITOR_GROUP_ID"], out var editorGroupId);
                     
-                    return new IPBModuleConfig(ipbUrl)
+                    return new IPBSiteModuleConfig(ipbUrl)
                     {
                         AdminGroupId = adminGroupId,
                         PublisherGroupId = publisherGroupId,
@@ -35,7 +35,8 @@ namespace BioEngine.BRC.Jobs
                         CallbackPath = "/login/ipb",
                         AuthorizationEndpoint = configuration["BE_IPB_AUTHORIZATION_ENDPOINT"],
                         TokenEndpoint = configuration["BE_IPB_TOKEN_ENDPOINT"],
-                        ApiReadonlyKey = configuration["BE_IPB_API_READONLY_KEY"]
+                        ApiReadonlyKey = configuration["BE_IPB_API_READONLY_KEY"],
+                        DataProtectionPath = configuration["BE_IPB_DATA_PROTECTION_PATH"]
                     };
                 }).AddModule<JobsModule>();
 
