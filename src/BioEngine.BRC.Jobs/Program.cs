@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BioEngine.BRC.Common;
 using BioEngine.Extra.IPB;
@@ -22,14 +24,24 @@ namespace BioEngine.BRC.Jobs
                     }
 
                     int.TryParse(configuration["BE_IPB_API_ADMIN_GROUP_ID"], out var adminGroupId);
-                    int.TryParse(configuration["BE_IPB_API_PUBLISHER_GROUP_ID"], out var publisherGroupId);
-                    int.TryParse(configuration["BE_IPB_API_EDITOR_GROUP_ID"], out var editorGroupId);
+                    int.TryParse(configuration["BE_IPB_API_SITE_TEAM_GROUP_ID"], out var siteTeamGroupId);
+                    var additionalGroupIds = new List<int> {siteTeamGroupId};
+                    if (!string.IsNullOrEmpty(configuration["BE_IPB_API_ADDITIONAL_GROUP_IDS"]))
+                    {
+                        var ids = configuration["BE_IPB_API_ADDITIONAL_GROUP_IDS"].Split(',');
+                        foreach (var id in ids)
+                        {
+                            if (int.TryParse(id, out var parsedId))
+                            {
+                                additionalGroupIds.Add(parsedId);
+                            }
+                        }
+                    }
                     
                     return new IPBSiteModuleConfig(ipbUrl)
                     {
                         AdminGroupId = adminGroupId,
-                        PublisherGroupId = publisherGroupId,
-                        EditorGroupId = editorGroupId,
+                        AdditionalGroupIds = additionalGroupIds.Distinct().ToArray(),
                         ApiClientId = configuration["BE_IPB_OAUTH_CLIENT_ID"],
                         ApiClientSecret = configuration["BE_IPB_OAUTH_CLIENT_SECRET"],
                         CallbackPath = "/login/ipb",
