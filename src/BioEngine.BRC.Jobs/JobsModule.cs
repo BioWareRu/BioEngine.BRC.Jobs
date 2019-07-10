@@ -12,7 +12,7 @@ namespace BioEngine.BRC.Jobs
         public override void ConfigureEntities(IServiceCollection serviceCollection, BioEntitiesManager entitiesManager)
         {
             base.ConfigureEntities(serviceCollection, entitiesManager);
-            entitiesManager.RegisterEntity<Post>();
+            RegisterRepositories(typeof(Post).Assembly, serviceCollection, entitiesManager);
         }
 
         public override void ConfigureServices(IServiceCollection services, IConfiguration configuration, IHostEnvironment environment)
