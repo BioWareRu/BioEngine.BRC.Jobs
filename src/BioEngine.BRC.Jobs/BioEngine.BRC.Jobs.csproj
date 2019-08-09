@@ -10,7 +10,7 @@
         <PackageReference Include="BioEngine.BRC.Common" Version="3.0.*" Condition="!Exists('..\..\..\BioEngine.BRC.Common')" />
         <PackageReference Include="BioEngine.Extra.IPB" Version="3.0.*" Condition="!Exists('..\..\..\..\BioEngine\BioEngine.Extra.IPB')" />
         <PackageReference Include="BioEngine.Core.Posts" Version="3.0.*" Condition="!Exists('..\..\..\..\BioEngine\BioEngine.Core')" />
-        <PackageReference Include="Hangfire.AspNetCore" Version="1.7.5" />
+        <PackageReference Include="Hangfire.AspNetCore" Version="1.7.6" />
         <PackageReference Include="Hangfire.PostgreSql" Version="1.6.0" />
     </ItemGroup>
     <ItemGroup>
