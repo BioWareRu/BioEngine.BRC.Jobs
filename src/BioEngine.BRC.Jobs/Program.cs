@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using BioEngine.BRC.Common;
+using BioEngine.Core.Posts.Site;
 using BioEngine.Extra.IPB;
 using BioEngine.Extra.IPB.Auth;
 
@@ -25,6 +26,7 @@ namespace BioEngine.BRC.Jobs
                     return new IPBSiteModuleConfig(ipbUrl) {ApiReadonlyKey = configuration["BE_IPB_API_READONLY_KEY"]};
                 })
                 .AddIpbUsers<IPBSiteUsersModule, IPBSiteUsersModuleConfig, IPBSiteCurrentUserProvider>()
+                .AddModule<PostsSiteModule<string>>()
                 .AddModule<JobsModule>();
 
             await bioEngine.RunAsync<Startup>();
