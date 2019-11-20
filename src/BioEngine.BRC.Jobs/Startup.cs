@@ -15,7 +15,8 @@ namespace BioEngine.BRC.Jobs
 {
     public class Startup : BioEngineWebStartup
     {
-        public Startup(IConfiguration configuration) : base(configuration)
+        public Startup(IConfiguration configuration, IHostEnvironment environment) : base(configuration,
+            environment)
         {
         }
 
