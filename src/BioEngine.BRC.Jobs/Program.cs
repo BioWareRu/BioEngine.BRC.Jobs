@@ -14,7 +14,6 @@ namespace BioEngine.BRC.Jobs
             var bioEngine = new Core.BioEngine(args)
                 .AddPostgresDb()
                 .AddBrcDomain()
-                .AddLogging()
                 .AddS3Storage()
                 .AddModule<IPBSiteModule, IPBSiteModuleConfig>((configuration, env) =>
                 {
