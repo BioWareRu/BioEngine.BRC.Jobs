@@ -11,6 +11,6 @@
     <PackageReference Include="BioEngine.Extra.IPB" Version="3.1.12473" />
     <PackageReference Include="BioEngine.Core.Posts.Site" Version="3.1.12473" />
     <PackageReference Include="Hangfire.AspNetCore" Version="1.7.22" />
-    <PackageReference Include="Hangfire.PostgreSql" Version="1.8.4" />
+    <PackageReference Include="Hangfire.PostgreSql" Version="1.8.6" />
   </ItemGroup>
 </Project>
