@@ -13,9 +13,6 @@ jobs:
     env:
       PROJECT: "BioEngine.BRC.Jobs"
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '3.1.x'
+      - uses: actions/checkout@v3
       - name: Publish app
         run: dotnet publish src/${{ env.PROJECT}}/${{ env.PROJECT}}.csproj --output /app/ --configuration Release
