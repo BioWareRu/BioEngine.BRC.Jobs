@@ -13,6 +13,6 @@ jobs:
     env:
       PROJECT: "BioEngine.BRC.Jobs"
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Publish app
         run: dotnet publish src/${{ env.PROJECT}}/${{ env.PROJECT}}.csproj --output /app/ --configuration Release
